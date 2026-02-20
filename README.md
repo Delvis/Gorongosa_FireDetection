@@ -1,4 +1,4 @@
-# Gorongosa VIIRS Fire Detection & Analysis
+# Gorongosa VIIRS Fire Detection & Analysis 🛰️🔥
 
 This repository contains a modular R pipeline for processing, analyzing, and visualizing active fire data from the **VIIRS (Visible Infrared Imaging Radiometer Suite)** sensor within the **Gorongosa National Park (GNP)** region, including the Mountain and Buffer zones.
 
@@ -96,4 +96,4 @@ Place the resulting CSVs into the `fire_moz_archive/` directory, or in `fire_moz
 
 If you use this repository or data, please cite it as follows:
 
-d'Oliveira Coelho, J. 2026. Gorongosa VIIRS Fire Detection & Analysis Pipeline. *GitHub*, https://github.com/Delvis/Gorongosa_VIIRS_FireDetection
+d'Oliveira Coelho, J. 2026. Gorongosa VIIRS Fire Detection & Analysis Pipeline. *GitHub*, https://github.com/Delvis/Gorongosa_FireDetection 
