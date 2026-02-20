@@ -16,7 +16,7 @@ The project has been optimized for high performance using spatial indexing and e
 
 ### Modular Library (`/R/` folder)
 Core logic is separated into functional modules for better maintainability:
-- **`viirs_regions.R`** — Loads shapefiles and performs geometric operations to define GNP, Mountain, and Buffer zones.
+- **`viirs_regions.R`** — Loads shapefiles and performs geometric operations to define Gorongosa National Park (*GNP*), Serra da Gorongosa (*Mountain*), and the Sustainable Development Zone (*Buffer*).
 - **`viirs_summary.R`** — Contains high-performance spatial join functions to aggregate fire detections into temporal summaries.
 - **`viirs_archive.R`** — Dedicated loaders for historical data.
 - **`viirs_nrt.R`** — Dedicated loaders for near real-time data.
@@ -85,7 +85,7 @@ Go to the [FIRMS Archive Download Tool](https://firms.modaps.eosdis.nasa.gov/dow
 - **File Format**: Select **CSV**.
 
 ### Step 4: Submit and Download
-Place the resulting CSVs into the `fire_moz_archive/` directory. Ensure they follow the naming convention `YYYY_Mozambique_SUOMI_VIIRS_C2.csv` for the automation to detect them.
+Place the resulting CSVs into the `fire_moz_archive/` directory, or in `fire_moz_current_year/` directory if they are recent NRT files. Ensure they follow the naming convention `YYYY_Mozambique_SUOMI_VIIRS_C2.csv` for the automation to detect them. If you are downloading more recent data to update the results, use the `YYYY_fire_nrt.csv` convention.
 
 ### NASA FIRMS Tutorial
 [![NASA FIRMS Tutorial](https://img.youtube.com/vi/xGGDMO8OTuw/0.jpg)](https://www.youtube.com/watch?v=xGGDMO8OTuw)

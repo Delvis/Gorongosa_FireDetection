@@ -3,3 +3,4 @@
 
 # Ignore R data caches (too large for GitHub)
 cache/fires_sf_latest.rds
+.Rproj.user
