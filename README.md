@@ -60,7 +60,7 @@ The scripts utilize a `cache/` system to avoid redundant spatial calculations:
 
 ### Stacked-Years Monthly Fire Density (2017-Present)
 
-![Stacked-Years Monthly Fires per km² by Region](plots/monthly_fires_historical_stack.png)  
+![Stacked-Years Monthly Fires per km² by Region](plots/monthly_fires_per_km2_historical_stack.png)  
 *Figure 3.* Monthly fire density (fires per km²) across Gorongosa National Park (GNP), Mountain, and Buffer zones for the years 2017-2025.
 
 ---
