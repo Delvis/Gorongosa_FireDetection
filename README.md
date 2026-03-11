@@ -12,6 +12,7 @@ The project has been optimized for high performance using spatial indexing and e
 - **`build_latest_dataset.R`** — The main entry point for data preparation. It combines archive and NRT data to create cached `.rds` files for specific years or the entire range.
 - **`plot_fires_per_year_quarter_and_region.R`** — Generates multi-year quarterly bar plots (2017–Present) showing fire density (Fires/km²) across main regions.
 - **`plot_fires_per_region_monthly.R`** — Generates monthly fire density breakdowns for a selected target year (e.g., 2025).
+- **`plot_fires_stacked_per_year.R`** — Generates monthly fire density breakdowns for all years available in generated csv (i.e., 2017-2025).
 - **`build_archive_cache.R`** — A utility script to force-rebuild the historical archive cache from raw CSV files.
 
 ### Modular Library (`/R/` folder)
@@ -45,6 +46,7 @@ The scripts utilize a `cache/` system to avoid redundant spatial calculations:
 - **`.rds` files** — Compressed, high-speed spatial data objects for rapid loading.
 - **Quarterly Plots** — Visual comparisons of fire density by region (2017–Present).
 - **Monthly Plots** — Detailed breakdowns for specific fire seasons.
+- **Stacked-Years Monthly Plots** - Same as Monthly plots, but in a stack with multiple years.
 
 ### Quarterly Fire Density (2017–Present)
 
@@ -55,6 +57,11 @@ The scripts utilize a `cache/` system to avoid redundant spatial calculations:
 
 ![Monthly Fires per km² by Region](plots/monthly_fires_per_km2_by_region_2025.png)  
 *Figure 2.* Monthly fire density (fires per km²) across Gorongosa National Park (GNP), Mountain, and Buffer zones for the year 2025.
+
+### Stacked-Years Monthly Fire Density (2017-Present)
+
+![Stacked-Years Monthly Fires per km² by Region](plots/monthly_fires_historical_stack.png)  
+*Figure 3.* Monthly fire density (fires per km²) across Gorongosa National Park (GNP), Mountain, and Buffer zones for the years 2017-2025.
 
 ---
 
