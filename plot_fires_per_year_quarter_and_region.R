@@ -17,12 +17,40 @@ source("R/viirs_sf.R")
 # 1. LOAD QUARTERLY DATA
 # -------------------------------
 
-# Load archive (2017-2025) and NRT (2026)
+# Load archive (2017-2025)
 arch <- load_viirs_archive(2017, 2025)
-nrt  <- load_viirs_nrt("fires_moz_current_year/2026_fire_nrt.csv")
+
+# Harmonize ONLY the specific columns causing the bind_rows type conflicts
+nrt_part1 <- nrt_part1 %>% mutate(
+  acq_time = as.character(acq_time),
+  version  = as.character(version)
+)
+
+nrt_part2 <- nrt_part2 %>% mutate(
+  acq_time = as.character(acq_time),
+  version  = as.character(version)
+)
+
+# Combine the split files seamlessly now
+nrt <- bind_rows(nrt_part1, nrt_part2)
+
+# If dataset is from BDQueimadas you need to uncomment and run the code below:
+# nrt_standardized <- nrt %>%
+#   # Filter out any rows with missing coords FIRST
+#   filter(!is.na(Latitude), !is.na(Longitude)) %>%
+#   mutate(
+#     temp_dt = ymd_hms(DataHora),
+#     acq_date = as.Date(temp_dt),
+#     acq_time = as.integer(format(temp_dt, "%H%M")),
+#     # Standardize names to match 'arch'
+#     latitude = as.numeric(Latitude),
+#     longitude = as.numeric(Longitude),
+#     frp = as.numeric(FRP)
+#   )
+
 
 # Merge and convert to SF
-fires_all <- combine_viirs(arch, nrt)
+fires_all <- combine_viirs(arch, nrt) # switch to nrt if using VIIRS
 fires_sf  <- prepare_fires_sf(fires_all)
 
 # Load regions list
@@ -107,3 +135,4 @@ ggsave(
   units = "px",
   scale = 1.3
 )
+
