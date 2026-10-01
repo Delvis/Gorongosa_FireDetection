@@ -20,6 +20,10 @@ source("R/viirs_sf.R")
 # Load archive (2017-2025)
 arch <- load_viirs_archive(2017, 2025)
 
+# Load current year data (2026)
+nrt_part1 <- load_viirs_nrt("fires_moz_current_year/2026_fire_nrt.csv")
+nrt_part2 <- load_viirs_nrt("fires_moz_current_year/2026_fire_nrt_2.csv")
+
 # Harmonize ONLY the specific columns causing the bind_rows type conflicts
 nrt_part1 <- nrt_part1 %>% mutate(
   acq_time = as.character(acq_time),

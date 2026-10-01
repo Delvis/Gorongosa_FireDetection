@@ -24,12 +24,23 @@ load_viirs_regions <- function(shapefile_dir = "shapefiles") {
   st_crs(gnp) <- 32736
   gnp <- st_transform(gnp, 4326)
   
+  C12 <- st_read(
+    file.path(shapefile_dir,
+              "c12_no_agric.shp"),
+    quiet = TRUE
+  )
+  
+  # original CRS fix
+  st_crs(C12) <- 32736
+  C12 <- st_transform(C12, 4326)
+  
   gorongosa <- st_read(
     file.path(shapefile_dir,
               "gnp_mountain_boundary_latlong.shp"),
     quiet = TRUE
   )
   gorongosa <- st_set_crs(gorongosa, 4326)
+  
   
   total <- st_read(
     file.path(shapefile_dir,
@@ -44,10 +55,12 @@ load_viirs_regions <- function(shapefile_dir = "shapefiles") {
   
   gnp <- st_make_valid(gnp)
   gorongosa <- st_make_valid(gorongosa)
+  C12 <- st_make_valid(C12)
   total <- st_make_valid(total)
   
   gnp_geom <- st_geometry(gnp)
   gorongosa_geom <- st_geometry(gorongosa)
+  C12_geom <- st_geometry(C12)
   total_geom <- st_geometry(total)
   
   # -------------------------------
@@ -71,6 +84,7 @@ load_viirs_regions <- function(shapefile_dir = "shapefiles") {
   regions <- list(
     GNP              = gnp,
     Mountain         = gorongosa,
+    C12              = C12,
     GNP_and_Mountain = gnp_mountain,
     Buffer           = buffer_only,
     Total            = total_area
